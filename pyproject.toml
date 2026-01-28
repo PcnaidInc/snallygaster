@@ -3,8 +3,8 @@ name = "snallygaster"
 version = "0.0.15"
 description = "Tool to scan for secret files on HTTP servers"
 readme = "README.md"
-authors = [{name = "Hanno Böck"}]
-classifiers=[
+authors = [{ name = "Hanno Böck" }]
+classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: System Administrators",
   "Natural Language :: English",
@@ -15,16 +15,12 @@ classifiers=[
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.14"
+  "Programming Language :: Python :: 3.14",
 ]
 license = "0BSD"
-    keywords = ["security", "vulnerability", "http"]
+keywords = ["security", "vulnerability", "http"]
 requires-python = ">=3.9"
-dependencies = [
-  "dnspython",
-  "lxml",
-  "urllib3"
-]
+dependencies = ["dnspython", "lxml", "urllib3"]
 
 [tool.setuptools_scm]
 
