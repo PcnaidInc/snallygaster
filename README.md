@@ -82,6 +82,13 @@ credit and thanks
 * Thanks to the organizers of Bornhack, Driving IT, SEC-T and the Rights and Freedom
   track at 34C3 for letting me present this work.
 
+CI
+--
+
+The CI workflow (`.github/workflows/ci.yml`) runs on every pull request and on pushes
+to the main branch. It lints the code (pycodestyle, pyupgrade, pyflakes, dlint, pylint,
+ruff), checks Python syntax, runs the test suite, and verifies the package builds.
+
 author
 ------
 

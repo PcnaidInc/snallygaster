@@ -1,0 +1,46 @@
+---
+name: CI
+"on":
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.x", "3.14"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies and linters
+        run: |
+          pip install -r requirements.txt
+          pip install pycodestyle pyupgrade pyflakes dlint pylint ruff
+      - name: Lint
+        run: |
+          ./runpyci.sh
+      - name: Syntax check
+        run: |
+          python -m py_compile snallygaster
+      - name: Test
+        env:
+          RUN_ONLINETESTS: 1
+        run: |
+          python -m unittest -v
+      - name: Build
+        run: |
+          pip install build
+          python -m build
