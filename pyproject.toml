@@ -22,6 +22,12 @@ keywords = ["security", "vulnerability", "http"]
 requires-python = ">=3.9"
 dependencies = ["dnspython", "lxml", "urllib3"]
 
+[tool.ruff.lint]
+external = ["DUO107", "DUO131", "DUO132"]
+
+[tool.ruff.lint.flake8-copyright]
+notice-rgx = "(?i)SPDX-License-Identifier:\\s*0BSD"
+
 [tool.setuptools_scm]
 
 [tool.setuptools]
